@@ -4,6 +4,7 @@
 <ul>
   <li>Comunicação com banco de dados relacional</li>
   <li>Statement e ResultSet</li>
+  <li>Controle de transações</li>
   <li>Encapsulamento de acesso em um DAO</li>
   <li>Connection pool, datasources e outros recursos importantes</li>
 </ul>
