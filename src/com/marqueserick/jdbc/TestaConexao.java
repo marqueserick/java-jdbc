@@ -1,3 +1,7 @@
+package com.marqueserick.jdbc;
+
+import com.marqueserick.jdbc.factory.ConnectionFactory;
+
 import java.sql.*;
 
 public class TestaConexao {

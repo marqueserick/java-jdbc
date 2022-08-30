@@ -1,8 +1,9 @@
+package com.marqueserick.jdbc.factory;
+
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
@@ -16,6 +17,8 @@ public class ConnectionFactory {
         comboPooledDataSource.setJdbcUrl(url);
         comboPooledDataSource.setUser(user);
         comboPooledDataSource.setPassword(password);
+
+        comboPooledDataSource.setMaxPoolSize(15);
 
         this.dataSource = comboPooledDataSource;
     }
