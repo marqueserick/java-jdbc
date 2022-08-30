@@ -4,7 +4,8 @@ public class TestaConexao {
 
 	public static void main(String[] args) throws SQLException {
 
-		Connection con = ConnectionFactory.criaConnection();
+		ConnectionFactory factory = new ConnectionFactory();
+		Connection con = factory.criaConnection();
 		System.out.println("Fechando a conexão com a base de dados...");
 		con.close();
 	}

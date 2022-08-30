@@ -2,7 +2,9 @@ import java.sql.*;
 
 public class TestaInsertComParametro {
     public static void main(String[] args) throws SQLException {
-        try(Connection con = ConnectionFactory.criaConnection()){
+        ConnectionFactory factory = new ConnectionFactory();
+
+        try(Connection con = factory.criaConnection()){
             con.setAutoCommit(false);
 
             String sql = "INSERT INTO PRODUTO (NOME, DESCRICAO) VALUES (?,?)";

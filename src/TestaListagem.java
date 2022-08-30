@@ -3,7 +3,8 @@ import java.sql.*;
 public class TestaListagem {
     public static void main(String[] args) throws SQLException {
 
-        Connection con = ConnectionFactory.criaConnection();
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection con = factory.criaConnection();
 
 //        Statement st = con.createStatement();
 //        st.execute("select * from produto");

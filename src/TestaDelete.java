@@ -1,11 +1,11 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class TestaDelete {
     public static void main(String[] args) throws SQLException {
-        Connection con = ConnectionFactory.criaConnection();
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection con = factory.criaConnection();
 
 //        Statement st = con.createStatement();
 //        st.execute("delete from produto where id>2");

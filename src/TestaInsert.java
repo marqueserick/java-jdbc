@@ -5,7 +5,8 @@ import java.sql.Statement;
 
 public class TestaInsert {
     public static void main(String[] args) throws SQLException {
-        Connection con = ConnectionFactory.criaConnection();
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection con = factory.criaConnection();
 
         Statement st = con.createStatement();
         st.execute("insert into produto (nome, descricao) values ('MOUSE','MOUSE SEM FIO')", Statement.RETURN_GENERATED_KEYS);
