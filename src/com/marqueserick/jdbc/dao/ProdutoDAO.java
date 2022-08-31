@@ -1,5 +1,6 @@
 package com.marqueserick.jdbc.dao;
 
+import com.marqueserick.jdbc.modelo.Categoria;
 import com.marqueserick.jdbc.modelo.Produto;
 
 import java.sql.*;
@@ -53,5 +54,26 @@ public class ProdutoDAO {
 
 
         return produtos;
+    }
+
+    public List<Produto> listar(Categoria categoria) throws SQLException {
+        String sql = "SELECT * FROM PRODUTO WHERE CATEGORIA_ID = ?";
+        List<Produto> produtos = new ArrayList<>();
+
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+
+            st.setInt(1,categoria.getId());
+            st.execute();
+            try (ResultSet result = st.getResultSet()) {
+                while (result.next()) {
+                    Produto produto = new Produto(result.getInt("id"),
+                            result.getString("nome"),
+                            result.getString("descricao"));
+
+                    produtos.add(produto);
+                }
+            }
+            return produtos;
+        }
     }
 }
