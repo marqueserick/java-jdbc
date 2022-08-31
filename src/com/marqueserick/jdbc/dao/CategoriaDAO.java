@@ -19,21 +19,26 @@ public class CategoriaDAO {
         this.con = connection;
     }
 
-    public List<Categoria> listar() throws SQLException {
-        List<Categoria> categorias = new ArrayList();
-        String sql = "SELECT * FROM CATEGORIA";
+    public List<Categoria> listar() {
+        try {
+            List<Categoria> categorias = new ArrayList();
+            String sql = "SELECT * FROM CATEGORIA";
 
-        try(PreparedStatement st = con.prepareStatement(sql)){
-          st.execute();
-          try(ResultSet rs = st.getResultSet()){
-              while(rs.next()){
-                  Categoria categoria = new Categoria(rs.getInt(1), rs.getString(2));
-                  categorias.add(categoria);
-              }
-          }
+            try (PreparedStatement st = con.prepareStatement(sql)) {
+                st.execute();
+                try (ResultSet rs = st.getResultSet()) {
+                    while (rs.next()) {
+                        Categoria categoria = new Categoria(rs.getInt(1), rs.getString(2));
+                        categorias.add(categoria);
+                    }
+                }
+            }
+            return categorias;
+        }catch (SQLException e){
+            throw new RuntimeException(e);
         }
 
-        return categorias;
+
     }
 
     public List<Categoria> listarProdutos() throws SQLException {
